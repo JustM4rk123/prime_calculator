@@ -16,6 +16,3 @@ testpaths = ["tests"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
-
-[project.scripts]
-speedtest = "prime_calculator.speedtest:speedtest"
