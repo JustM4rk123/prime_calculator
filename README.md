@@ -65,6 +65,9 @@ Also, you can run a speedtest script by executing this command in the terminal:
 python -m primecalculator.speedtest
 ``` 
 
+This script runs several benchmarks from low numbers (such as 50) all the way up to high ones (such as 10 bilions),
+printing the percentage output and the elapsed time for each execution
+
 ## Use as a library
 
 The `sieve` function is available directly from the package:
