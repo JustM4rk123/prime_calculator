@@ -22,7 +22,7 @@ def speedtest():
         result = sieve(n)
         elapsed = time.perf_counter() - start
 
-        print(f"{n:>13,} -> {result:>9.6f} %, elapsed time: {elapsed:>11.6f} seconds")
+        print(f"{n:>14,} -> {result:>9.6f} %, elapsed time: {elapsed:>11.6f} seconds")
 
 
 if __name__ == "__main__":
