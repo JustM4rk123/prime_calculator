@@ -1,7 +1,6 @@
 # Prime Number Calculator
 
-
-Small Python project that uses the **Sieve of Eratosthenes** to calculate the percentage of prime numbers between `0` and a maximum value provided by the user.
+Small Python project that uses the Sieve of Eratosthenes to calculate the percentage of prime numbers up to a user-provided maximum value.
 
 ## Requirements
 
@@ -10,9 +9,9 @@ Small Python project that uses the **Sieve of Eratosthenes** to calculate the pe
 
 ## Installation
 
-From the project root, install the dependencies listed in `requirements.txt`:
+From the project root, install the dependencies and the package in editable mode:
 
-```powershell
+```bash
 python -m pip install -r requirements.txt
 python -m pip install -e .
 ```
@@ -24,49 +23,50 @@ The `requirements.txt` file contains:
 
 ## Usage
 
-The program can be run with or without a flag:
+The program can be run either interactively or by passing the number directly as a CLI argument.
 
-Senza flag:
+### Interactive mode
 
-```powershell
+```bash
 python -m prime_calculator
 ```
 
-Enter the maximum number when prompted. For example:
+Example:
 
 ```text
 Up to which number should prime numbers be calculated? 100
 25.0% of the numbers are prime
 ```
 
-With flag:
+### CLI argument mode
 
-```powershell
-python -m prime_calculator -n [number]
-```
-
-Or:
-
-```powershell
-python -m prime_calculator --number [number]
-```
-
-Example:
-
-```powershell
+```bash
 python -m prime_calculator -n 100
-25.0% of the numbers are primes
 ```
 
-The provided value must be a non-negative integer. A negative value raises a `ValueError`.
+or:
 
-Also, you can run a speedtest script by executing this command in the terminal:
-```poweshell
-python -m primecalculator.speedtest
-``` 
+```bash
+python -m prime_calculator --number 100
+```
 
-This script runs several benchmarks from low numbers (such as 50) all the way up to high ones (such as 10 bilions),
-printing the percentage output and the elapsed time for each execution
+Example output:
+
+```text
+25.0% of the numbers are prime
+```
+
+The provided value must be a non-negative integer. Passing a negative number raises a `ValueError`.
+
+### Speed test
+
+You can run the included benchmark script:
+
+```bash
+python -m prime_calculator.speedtest
+```
+
+This script runs multiple benchmarks from small values (for example `10`) up to very large ones (for example `10_000_000_000`), printing the prime percentage and the elapsed time for each run.
 
 ## Use as a library
 
@@ -79,19 +79,19 @@ percentage = sieve(100)
 print(percentage)  # 25.0
 ```
 
-The function returns the percentage of prime numbers between `0` and `n`, inclusive. It returns `0` for values below `2`.
+The function returns the percentage of prime numbers from `0` to `n`, inclusive. It returns `0` for values below `2`.
 
 ## Tests
 
 Run the test suite with:
 
-```powershell
+```bash
 python -m pytest
 ```
 
-The tests verify sieve results for different values and edge cases.
+The tests cover the main sieve calculations and edge cases.
 
-## Struttura del progetto
+## Project structure
 
 ```text
 prime_calculator/
@@ -103,15 +103,16 @@ prime_calculator/
 │       ├── __init__.py
 │       ├── __main__.py
 │       ├── core.py
-│       ├── validation.py
-│	└── speedtest.py
+│       ├── speedtest.py
+│       └── validation.py
 └── tests/
-	├── test_prime_calculator.py
-	├── test_cli.py
-	└── test_validation.py
+    ├── test_cli.py
+    ├── test_prime_calculator.py
+    └── test_validation.py
 ```
 
-- `core.py`: implements the Sieve of Eratosthenes.
-- `validation.py`: validates the provided number.
+- `core.py`: implements the Sieve of Eratosthenes logic.
+- `validation.py`: validates the user-provided number.
 - `__main__.py`: handles command-line execution.
+- `speedtest.py`: runs performance benchmarks.
 - `tests/`: contains the automated tests.
